@@ -84,19 +84,25 @@ const Workspace = (props) => {
             y: y,
         });
         setVisibleCommentForm(true);
+        setVisibleCommentBox(false)
       }
       
-      const handleCommentBox = (comment) => {
+      const handleCommentBox = (comment, visible) => {
         setCommentBox(comment)
-        setVisibleCommentBox(true)
+        console.log(visible)
+        setVisibleCommentBox(visible)
+        setVisibleCommentForm(false);
       }
   
 
     return (
-        <WorkspaceWrapper id="workspace-wrapper">
-            <canvas ref={canvasRef} {...props} onClick={e => handleClick(e)} onContextMenu={e => handleContextmenu(e)}></canvas>
+        <WorkspaceWrapper id="workspace-wrapper" >
+            <canvas ref={canvasRef} {...props} onClick={e => {
+                handleClick(e); 
+                handleCommentBox({}, false)
+            }} onContextMenu={e => handleContextmenu(e)}></canvas>
             {(visibleCommentForm ? <CommentForm y={commentFormPosition.y} x={commentFormPosition.x}/> : null)}
-            {commentsList.map((comment,index) => <CommentPoint key={index} x={comment.x} y={comment.y} onClick={() => handleCommentBox(comment)} /> )}
+            {commentsList.map((comment,index) => <CommentPoint key={index} x={comment.x} y={comment.y} onClick={() => handleCommentBox(comment, true)} /> )}
             {(visibleCommentBox ? <CommentBox y={commentBox.y} x={commentBox.x} title={commentBox.title} description={commentBox.description}/> : null)}
         </WorkspaceWrapper>
         
