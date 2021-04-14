@@ -5,10 +5,10 @@ import PrimaryBtn from 'src/Components/Atoms/PrimaryBtn/PrimaryBtn'
 
 const LoginFormWrapper = styled.form`
         position: relative;
-        padding: 50px;
+        padding: 70px 60px;
         display: flex;
         flex-direction: column;
-        max-width: 500px;
+        max-width: 600px;
         margin: 20px auto;
         background-color: #fff;
         border: 1px solid #d8d8d8;

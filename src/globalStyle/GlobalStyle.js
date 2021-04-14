@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
 
     h1{
         margin-top: 0;
+        margin-bottom: 25px;
     }
 `
 
