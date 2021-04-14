@@ -1,7 +1,9 @@
 import {createGlobalStyle} from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
 
     *{
         box-sizing: border-box;
@@ -13,8 +15,12 @@ const GlobalStyle = createGlobalStyle`
 
     body{
         font-size: 1.6rem;
-        font-family: 'Montserrat', sans-serif;
-        background: #737373;
+        font-family: 'Roboto', sans-serif;
+        background: #fff;
+    }
+
+    h1{
+        margin-top: 0;
     }
 `
 

@@ -7,18 +7,21 @@ import CommentPoint from 'src/Components/Atoms/CommentPoint/CommentPoint';
 import CommentBox from 'src/Components/Organisms/CommentBox/CommentBox';
 
 const comments = [{
+    index: 0,
     x:200,
     y: 200,
     title: 'title 1',
     description: 'Lorem ipsum 1'
 },
 {
+    index: 1,
     x:400,
     y: 400,
     title: 'title 2',
     description: 'Lorem ipsum 2'
 },
 {
+    index: 2,
     x:600,
     y: 600,
     title: 'title 3',
@@ -89,7 +92,6 @@ const Workspace = (props) => {
       
       const handleCommentBox = (comment, visible) => {
         setCommentBox(comment)
-        console.log(visible)
         setVisibleCommentBox(visible)
         setVisibleCommentForm(false);
       }
@@ -102,7 +104,7 @@ const Workspace = (props) => {
                 handleCommentBox({}, false)
             }} onContextMenu={e => handleContextmenu(e)}></canvas>
             {(visibleCommentForm ? <CommentForm y={commentFormPosition.y} x={commentFormPosition.x}/> : null)}
-            {commentsList.map((comment,index) => <CommentPoint key={index} x={comment.x} y={comment.y} onClick={() => handleCommentBox(comment, true)} /> )}
+            {commentsList.map((comment,index) => <CommentPoint key={index} x={comment.x} y={comment.y} onClick={() => handleCommentBox(comment, true)} >{comment.index}</CommentPoint> )}
             {(visibleCommentBox ? <CommentBox y={commentBox.y} x={commentBox.x} title={commentBox.title} description={commentBox.description}/> : null)}
         </WorkspaceWrapper>
         

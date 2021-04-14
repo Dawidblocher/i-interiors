@@ -12,6 +12,6 @@ const InputStyled = styled.input`
     background: transparent;
 `
 
-const Input = (props) => <InputStyled type={props.type} placeholder={props.placeholder}></InputStyled>
+const Input = (props) => <InputStyled type={props.type} placeholder={props.placeholder} className={props.className}></InputStyled>
 
 export default Input; 

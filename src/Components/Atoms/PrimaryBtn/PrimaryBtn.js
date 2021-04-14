@@ -9,7 +9,7 @@ const StyledButton = styled.button`
 `;
 
 const PrimaryBtn = (props) => (
-    <StyledButton type={props.type}>{props.children}</StyledButton>
+    <StyledButton type={props.type} className={props.className}>{props.children}</StyledButton>
 )
 
 export default PrimaryBtn;
