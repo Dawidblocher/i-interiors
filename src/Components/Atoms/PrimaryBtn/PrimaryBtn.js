@@ -5,7 +5,17 @@ const StyledButton = styled.button`
     background: ${(props) => props.theme.accentColor};
     color: #fff;
     border-radius: 10px;
-    border: 0;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background .3s, border .3s, color .3s;
+    font-weight: 500;
+    
+    &:hover{
+        border: 1px solid ${(props) => props.theme.accentColor};
+        color: ${(props) => props.theme.accentColor};
+        background: transparent;
+    }
+
 `;
 
 const PrimaryBtn = (props) => (

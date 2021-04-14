@@ -24,6 +24,7 @@ width: 100%;
 
 const PrimaryBtnStyled = styled(PrimaryBtn)`
     padding: 15px 25px;
+    text-transform: uppercase;
 `
 
 const LoginForm = (props) => {
