@@ -2,8 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import Input from 'src/Components/Atoms/Input/Input'
 import PrimaryBtn from 'src/Components/Atoms/PrimaryBtn/PrimaryBtn'
+import { Formik, Form } from 'formik'
 
-const RegisterFormWrapper = styled.form`
+const RegisterFormWrapper = styled.div`
         position: relative;
         padding: 70px 60px;
         display: flex;
@@ -32,11 +33,51 @@ const RegisterForm = (props) => {
     return (
         <RegisterFormWrapper id="workspace-wrapper" >
             <h1>Zarejestruj się</h1>
-            <InputStyled type='text' placeholder='Imię' />
-            <InputStyled type='text' placeholder='Nazwisko' />
-            <InputStyled type='text' placeholder='Email adres' />
-            <InputStyled type='password' placeholder='Hasło'/>
-            <PrimaryBtnStyled type='submit' >Zarejestruj</PrimaryBtnStyled>
+            <Formik
+                initialValues={{firstname: '', surname: '', email: '', password: ''}}
+                onSubmit={(values, { setSubmitting }) => {
+                    console.log(values)
+                    setSubmitting(false)
+                }}>
+            {({ values,
+                errors,
+                touched,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                isSubmitting, 
+            }) => (
+                <Form>
+                    <InputStyled 
+                        name='firstname' type='text' placeholder='Imię' 
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.firstname}
+                    />
+                    <InputStyled 
+                        name='surname' type='text' placeholder='Nazwisko'
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.surname} 
+                    />
+                    <InputStyled 
+                        name='email' type='text' placeholder='Email adres'
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.email} 
+                    />
+                    <InputStyled 
+                        name='password' type='password' placeholder='Hasło'
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.password}
+                    />
+                    <PrimaryBtnStyled type='submit' >Zarejestruj</PrimaryBtnStyled>
+                </Form>
+            )}
+
+            </Formik>
+            
         </RegisterFormWrapper>
         
 

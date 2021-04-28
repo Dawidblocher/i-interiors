@@ -2,8 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import Input from 'src/Components/Atoms/Input/Input'
 import PrimaryBtn from 'src/Components/Atoms/PrimaryBtn/PrimaryBtn'
+import { Formik, Form } from 'formik'
 
-const LoginFormWrapper = styled.form`
+const LoginFormWrapper = styled.div`
         position: relative;
         padding: 70px 60px;
         display: flex;
@@ -32,9 +33,39 @@ const LoginForm = (props) => {
     return (
         <LoginFormWrapper id="workspace-wrapper" >
             <h1>Zaloguj się</h1>
-            <InputStyled type='text' placeholder='Email adres' />
-            <InputStyled type='password' placeholder='Hasło'/>
-            <PrimaryBtnStyled type='submit' >Zaloguj się</PrimaryBtnStyled>
+            <Formik
+                initialValues={{email: '', password: ''}}
+                onSubmit={(values, { setSubmitting }) => {
+                    console.log(values)
+                    setSubmitting(false)
+                }}>
+                {({ values,
+                    errors,
+                    touched,
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                    isSubmitting, 
+                }) => (
+                    <Form>
+                        <InputStyled 
+                            type='text' placeholder='Email adres' name='email' 
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.email}
+                        />
+                        <InputStyled 
+                            type='password' placeholder='Hasło' name='password'
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.password}
+
+                        />
+                        <PrimaryBtnStyled type='submit' >Zaloguj się</PrimaryBtnStyled>
+                    </Form>
+                )}
+            </Formik>
+            
         </LoginFormWrapper>
         
 
